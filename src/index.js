@@ -61,12 +61,66 @@
 // ({foo} ={foo:'LuLisong'});
 // console.log(foo); //控制台输出LuLisong
 //字符串解构：字符串也可以解构，这是因为，此时字符串被转换成了一个类似数组的对象。在实战项目中解构Json数据格式还是很普遍的，有了ES6得帮助，提高了不少工作效率
-const [a,b,c,d,e,f,g,h]="LuLisong";
-console.log(a);
-console.log(b);
-console.log(c);
-console.log(d);
-console.log(e);
-console.log(f);
-console.log(g);
-console.log(h);
+// const [a,b,c,d,e,f,g,h]="LuLisong";
+// console.log(a);
+// console.log(b);
+// console.log(c);
+// console.log(d);
+// console.log(e);
+// console.log(f);
+// console.log(g);
+// console.log(h);
+//程序运行会报错，因为没有定义
+// function a(a,b,c){
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+//     console.log(d);
+//     console.log(e)
+// }
+// a(1,2,3);
+//扩展运算符不会报错
+// function a(...arg){
+//     console.log(arg[0]);
+//     console.log(arg[1]);
+//     console.log(arg[2]);
+//     console.log(arg[3]);
+//     console.log(arg[4]);
+//     console.log(arg[5]);
+// }
+// a(1,2,3);
+//输出["www", "baidu", "com"]，["www", "baidu", "com", "百度"]
+//因为这是对内存堆栈的引用，而不是真正的赋值。会造成业务逻辑的错误。
+// let arr1=['www','baidu','com'];
+// let arr2=arr1;
+// console.log(arr2);
+// arr2.push('百度');
+// console.log(arr1);
+//扩展运算符确保了arr1的值没有改变
+// let arr1=['www','baidu','com'];
+// let arr2=[...arr1];
+// console.log(arr2);
+// arr2.push('百度');
+// console.log(arr2);
+// console.log(arr1);
+//rest运算符是知道已知元素个数扩展剩下的
+// function a(a,...arg){
+//     console.log(arg.length)
+// }
+// a(0,1,2,3,4,5,6,7,8,9);
+//es5循环写法
+// function a(a,...arg){
+//     // console.log(arg.length);
+//     for(let i=0;i<arg.length;i++){
+//         console.log(arg[i])
+//     }
+// }
+// a(0,1,2,3,4,5,6,7,8,9);
+//es6写法,for…of的循环可以避免我们开拓内存空间，增加代码运行效率，建议工作中使用for…of循环。
+function a(a,...arg){
+    // console.log(arg.length);
+    for(let val of arg){
+        console.log(val)
+    }
+}
+a(0,1,2,3,4,5,6,7,8,9);

@@ -1,7 +1,5 @@
 "use strict";
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 //var是全局变量，会污染全局
 // var a = 1;
 // console.log(a);
@@ -64,23 +62,92 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 // let foo;
 // ({foo} ={foo:'LuLisong'});
 // console.log(foo); //控制台输出LuLisong
-//字符串解构：字符串也可以解构，这是因为，此时字符串被转换成了一个类似数组的对象。
-var _LuLisong = "LuLisong",
-    _LuLisong2 = _slicedToArray(_LuLisong, 8),
-    a = _LuLisong2[0],
-    b = _LuLisong2[1],
-    c = _LuLisong2[2],
-    d = _LuLisong2[3],
-    e = _LuLisong2[4],
-    f = _LuLisong2[5],
-    g = _LuLisong2[6],
-    h = _LuLisong2[7];
+//字符串解构：字符串也可以解构，这是因为，此时字符串被转换成了一个类似数组的对象。在实战项目中解构Json数据格式还是很普遍的，有了ES6得帮助，提高了不少工作效率
+// const [a,b,c,d,e,f,g,h]="LuLisong";
+// console.log(a);
+// console.log(b);
+// console.log(c);
+// console.log(d);
+// console.log(e);
+// console.log(f);
+// console.log(g);
+// console.log(h);
+//程序运行会报错，因为没有定义
+// function a(a,b,c){
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+//     console.log(d);
+//     console.log(e)
+// }
+// a(1,2,3);
+//扩展运算符不会报错
+// function a(...arg){
+//     console.log(arg[0]);
+//     console.log(arg[1]);
+//     console.log(arg[2]);
+//     console.log(arg[3]);
+//     console.log(arg[4]);
+//     console.log(arg[5]);
+// }
+// a(1,2,3);
+//输出["www", "baidu", "com"]，["www", "baidu", "com", "百度"]
+//因为这是对内存堆栈的引用，而不是真正的赋值。会造成业务逻辑的错误。
+// let arr1=['www','baidu','com'];
+// let arr2=arr1;
+// console.log(arr2);
+// arr2.push('百度');
+// console.log(arr1);
+//扩展运算符确保了arr1的值没有改变
+// let arr1=['www','baidu','com'];
+// let arr2=[...arr1];
+// console.log(arr2);
+// arr2.push('百度');
+// console.log(arr2);
+// console.log(arr1);
+//rest运算符是知道已知元素个数扩展剩下的
+// function a(a,...arg){
+//     console.log(arg.length)
+// }
+// a(0,1,2,3,4,5,6,7,8,9);
+//es5循环写法
+// function a(a,...arg){
+//     // console.log(arg.length);
+//     for(let i=0;i<arg.length;i++){
+//         console.log(arg[i])
+//     }
+// }
+// a(0,1,2,3,4,5,6,7,8,9);
+//es6写法
+function a(a) {
+    for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        arg[_key - 1] = arguments[_key];
+    }
 
-console.log(a);
-console.log(b);
-console.log(c);
-console.log(d);
-console.log(e);
-console.log(f);
-console.log(g);
-console.log(h);
+    // console.log(arg.length);
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var val = _step.value;
+
+            console.log(val);
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
+}
+a(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
