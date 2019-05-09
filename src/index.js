@@ -117,10 +117,31 @@
 // }
 // a(0,1,2,3,4,5,6,7,8,9);
 //es6写法,for…of的循环可以避免我们开拓内存空间，增加代码运行效率，建议工作中使用for…of循环。
-function a(a,...arg){
-    // console.log(arg.length);
-    for(let val of arg){
-        console.log(val)
-    }
-}
-a(0,1,2,3,4,5,6,7,8,9);
+// function a(a,...arg){
+//     // console.log(arg.length);
+//     for(let val of arg){
+//         console.log(val)
+//     }
+// }
+// a(0,1,2,3,4,5,6,7,8,9);
+
+//字符串模板:字符串的拼接，运算，查找，复制
+// let lulisong = "陆力松";
+// let blog = "字符串模板"+lulisong+"es6";
+// document.write(blog);
+// let lulisong = "陆力松";
+// let blog = `字符串模板${lulisong}es6`;
+// document.write(blog);
+
+// let a = 1;
+// let b = 2;
+// let result = `${a+b}`;
+// document.write(result);
+
+// let lulisong = "陆力松";
+// let blog = `字符串模板${lulisong}es6`;
+// document.write(blog.indexOf(lulisong));
+// document.write(blog.includes(lulisong));
+// document.write(blog.startsWith(lulisong));
+// document.write(blog.endsWith(lulisong));
+// document.write('lulisong|'.repeat(34));

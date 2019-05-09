@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 //var是全局变量，会污染全局
 // var a = 1;
@@ -118,36 +118,32 @@
 //     }
 // }
 // a(0,1,2,3,4,5,6,7,8,9);
-//es6写法
-function a(a) {
-    for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        arg[_key - 1] = arguments[_key];
-    }
+//es6写法,for…of的循环可以避免我们开拓内存空间，增加代码运行效率，建议工作中使用for…of循环。
+// function a(a,...arg){
+//     // console.log(arg.length);
+//     for(let val of arg){
+//         console.log(val)
+//     }
+// }
+// a(0,1,2,3,4,5,6,7,8,9);
 
-    // console.log(arg.length);
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+//字符串模板:字符串的拼接，运算，查找，复制
+// let lulisong = "陆力松";
+// let blog = "字符串模板"+lulisong+"es6";
+// document.write(blog);
+// let lulisong = "陆力松";
+// let blog = `字符串模板${lulisong}es6`;
+// document.write(blog);
 
-    try {
-        for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var val = _step.value;
+// let a = 1;
+// let b = 2;
+// let result = `${a+b}`;
+// document.write(result);
 
-            console.log(val);
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally {
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-            }
-        } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
-        }
-    }
-}
-a(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+// let lulisong = "陆力松";
+// let blog = `字符串模板${lulisong}es6`;
+// document.write(blog.indexOf(lulisong));
+// document.write(blog.includes(lulisong));
+// document.write(blog.startsWith(lulisong));
+// document.write(blog.endsWith(lulisong));
+document.write('lulisong|'.repeat(34));
